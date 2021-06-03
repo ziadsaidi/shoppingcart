@@ -1,13 +1,15 @@
-<div class="row m-5">
+<div class="row p-3 m-3">
+{{#each products as |person|}}
+
 
 <div class="card col-sm-5  col-md-3 m-2 p-2" style="width: 18rem;">
-  <img class="img-responsive" src="https://techsslash.com/wp-content/uploads/2020/10/Manga.jpg" class="card-img-top" alt="...">
+  <img class="img-responsive" src={{person.imgPath}} class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title">Anime 1</h5>
-    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi facere perspiciatis atque esse voluptate amet, suscipit neque. Asperiores facere fugiat ad animi fuga aut. Magni quia natus voluptatem assumenda eius.</p>
+    <h5 class="card-title">{{title}}</h5>
+    <p class="card-text">{{description}}</p>
    </div>
     <div class="card-footer">
- <div id="price" class="price pull-left"> $12 </div>
+ <div id="price" class="price pull-left"> ${{price}} </div>
   <a href="#" class="btn btn-success pull-right">Buy </a>
     </div>
     
@@ -16,43 +18,13 @@
   </div>
 
 
-<div class="card col-sm-5 col-md-3 m-2  p-2" style="width: 18rem;">
-  <img class="img-responsive" src="https://dw9to29mmj727.cloudfront.net/properties/2016/371-SeriesThumbnails_MHA__400x320.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Anime 2</h5>
-    <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo aspernatur consequuntur impedit. Corporis vitae dolor vero praesentium nesciunt facere laboriosam reprehenderit quisquam culpa qui. Porro temporibus placeat possimus quibusdam molestiae!</p>
-     </div>
-    <div class="card-footer">
-    <div id="price" class="price pull-left"> $27 </div>
- <a href="#" class="btn btn-success pull-right">Buy </a>
-    </div>
-   
 
-</div>
-<div class="card col-sm-5  col-md-3 m-2  p-2" style="width: 18rem;">
-  <img class="img-responsive" src="https://static.cnews.fr/sites/default/files/demon-slayer-manga_5d7b879f39262_0.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Anime 3</h5>
-    <p class="card-text"></p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus quae, eaque magni quo consectetur aperiam cum ad nulla totam incidunt labore enim, earum deleniti quaerat aliquid ab ullam voluptas ratione.</p>
-       
-  </div>
-    <div class="card-footer">
-    <div id="price" class="price pull-left"> $14 </div>
- <a href="#" class="btn btn-success pull-right">Buy </a>
-    </div>
 
-</div>
-<div class="card col-sm-5  col-md-3 m-2  p-2" style="width: 18rem;">
-  <img class="img-responsive" src="https://breakforbuzz.com/wp-content/uploads/2020/07/anim%C3%A9s-et-manga.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Anime 4</h5>
-    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla nobis deleniti maiores accusamus veritatis? Ipsum corporis enim cum, minima eum at ullam repellendus corrupti, minus consectetur a cumque reprehenderit. Numquam!</p>
- </div>
-    <div class="card-footer">
-    <div id="price" class="price pull-left"> $89 </div>
- <a href="#" class="btn btn-success pull-right">Buy </a>
-    </div>
-   
-  </div>
 
+
+{{/each}}
 </div>
+
+
+
+

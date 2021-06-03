@@ -3,11 +3,22 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const mongoose = require("mongoose");
 var expressHbs = require("express-handlebars");
+var session = require('express-session');
+
 var indexRouter = require('./routes/index');
 
 
 var app = express();
+(async function(){try{
+ await  mongoose.connect("mongodb://localhost:27017/Shopping");
+ console.log("Connected To MongoDB");
+}
+catch(e){
+  console.error(e);
+}})();
+
 
 // view engine setup
 //app.set('views', path.join(__dirname, 'views'));
@@ -24,6 +35,12 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+  secret:'sslskneiéj144#',
+  resave:false,
+  saveUninitialized:false
+
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
