@@ -6,6 +6,9 @@ var logger = require('morgan');
 const mongoose = require("mongoose");
 var expressHbs = require("express-handlebars");
 var session = require('express-session');
+const flash = require('connect-flash');
+const passport = require('passport');
+
 
 var indexRouter = require('./routes/index');
 
@@ -19,6 +22,7 @@ catch(e){
   console.error(e);
 }})();
 
+require('./config/passport');
 
 // view engine setup
 //app.set('views', path.join(__dirname, 'views'));
@@ -41,6 +45,10 @@ app.use(session({
   saveUninitialized:false
 
 }));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
