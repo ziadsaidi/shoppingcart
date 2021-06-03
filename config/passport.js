@@ -1,6 +1,7 @@
 const passport = require('passport');
 const User = require("../models/user");
 const localStrategy = require("passport-local").Strategy
+const { body, validationResult } = require('express-validator');
 
 passport.serializeUser(function(user,done){
  
@@ -19,8 +20,8 @@ passport.use("local.signup", new localStrategy({
     passwordField:'password',
     passReqToCallback:true
 }, function(req,email,password,done){
+   
 
-    console.log(email);
     User.findOne({'email':email} , function(err,user){
         if(err){
             return done(err);

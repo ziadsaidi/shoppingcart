@@ -8,6 +8,7 @@ var expressHbs = require("express-handlebars");
 var session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
+const validator = require('express-validator');
 
 
 var indexRouter = require('./routes/index');
