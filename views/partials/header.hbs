@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#"><i class="fa fa-home" aria-hidden="true"> </i>Home</a>
+  <a class="navbar-brand" href="/"><i class="fa fa-home" aria-hidden="true"> </i>Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -16,13 +16,28 @@
    <span class="fa fa-user"> </span>       User Managment
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">
-              <span class="fa fa-user"> </span>
+         
+         {{#if isAuth}}
+          <a class="dropdown-item" href="/users/profile">
+            
               User Account</a>
-          <a class="dropdown-item" href="#">
-              <i class="fa fa-sign-out" aria-hidden="true"> </i>
+          <a class="dropdown-item" href="/users/logout">
+             
               Logout</a>
-        </div>
+       
+         {{else}}
+         <a class="dropdown-item" href="/users/signup">
+             
+              Sign up</a>
+          <a class="dropdown-item" href="/users/signin">
+            </i>
+              Sign in</a>
+
+         
+
+         {{/if}}
+          </div>
+         
       </li>
     </ul>
   </div>

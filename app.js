@@ -8,10 +8,11 @@ var expressHbs = require("express-handlebars");
 var session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
-const validator = require('express-validator');
+const csrf = require("csurf");
 
 
 var indexRouter = require('./routes/index');
+var userRouter = require('./routes/user');
 
 
 var app = express();
@@ -46,14 +47,26 @@ app.use(session({
   saveUninitialized:false
 
 }));
+
+app.use(csrf({cookie:true}))
+app.use(function (req, res, next) {
+  res.cookie('XSRF-TOKEN', req.csrfToken());
+  res.locals.csrftoken = req.csrfToken();
+  next();
+})
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use(function(req,res,next){
+  res.locals.isAuth = req.isAuthenticated();
+  next();
+})
+app.use('/users',userRouter);
 
+app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
